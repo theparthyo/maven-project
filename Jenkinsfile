@@ -21,14 +21,19 @@ pipeline{
                     checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'Checkstyle', unHealthy: ''
                     echo "archive"
                     archiveArtifacts '**/*.war'
-                    echo "build test pacakage"
-                    build 'dev_depoy'
+                    
                 }
             }
         }
         stage('deploy'){
             steps{
                 echo "this is Deploy Stage"
+                timeout (time: 60, unit: 'SECONDS') {
+                   input 'do you want run this job' 
+
+                }
+                echo "build test pacakage"
+                    build 'dev_depoy'
             }
         }
     }
