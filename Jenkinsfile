@@ -16,7 +16,7 @@ pipeline{
                 sh label: '', script: 'mvn clean package checkstyle:checkstyle'
             }
             post{
-                sucess{
+                success{
                     echo "checkstyle"
                     checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'Checkstyle', unHealthy: ''
                     echo "archive"
